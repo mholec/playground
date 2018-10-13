@@ -1,0 +1,12 @@
+﻿@using demo.Services.Generators
+@inject ITransientGuidGen TransientGuidGen
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>View Injection</h2>
+
+<p>
+    Guid: @TransientGuidGen.GetGuid()
+</p>
