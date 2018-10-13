@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <table border="10">
+        <tr>
+            <td>User.Identity.AuthenticationType</td>
+            <td>@User.Identity.AuthenticationType</td>
+        </tr>
+        <tr>
+            <td>User.Identity.IsAuthenticated</td>
+            <td>@User.Identity.IsAuthenticated</td>
+        </tr>
+        <tr>
+            <td>User.Identity.Name</td>
+            <td>@User.Identity.Name</td>
+        </tr>
+        <tr>
+            <td>User.Claims</td>
+            <td>
+                <table border="5">
+                    @foreach (var userClaim in User.Claims)
+                    {
+                        <tr>
+                            <td>Type</td>
+                            <td>@userClaim.Type</td>
+                        </tr>
+                        <tr>
+                            <td>Value</td>
+                            <td>@userClaim.Value</td>
+                        </tr>
+                        <tr>
+                            <td>ValueType</td>
+                            <td>@userClaim.ValueType</td>
+                        </tr>
+                        <tr>
+                            <td>Issuer</td>
+                            <td>@userClaim.Issuer</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" bgcolor="gray">&nbsp;</td>
+                        </tr>
+                    }
+
+                </table>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

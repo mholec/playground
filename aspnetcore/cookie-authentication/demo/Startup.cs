@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,24 +9,33 @@ namespace demo
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+	        services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+		        .AddCookie(options =>
+		        {
+					options.AccessDeniedPath = "/account/accessdenied";
+			        options.LoginPath = "/account/login";
+			        options.LogoutPath = "/account/logout";
+					options.Cookie.Expiration = TimeSpan.FromDays(365);
+					//options.Cookie.Domain = "miroslavholec.cz";
+		        });
+
+	        services.AddMvc();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+	        app.UseCookiePolicy(new CookiePolicyOptions()
+	        {
+				// MinimumSameSitePolicy = SameSiteMode.Strict
+	        });
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+			app.UseDeveloperExceptionPage();
+
+	        app.UseAuthentication(); // v pipeline vždy před AddMvc()
+
+	        app.UseMvc();
         }
     }
 }
