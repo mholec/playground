@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Security.Claims;
+using demo.Extras.AuthHandlers;
 using demo.Extras.Requirements;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,7 +33,14 @@ namespace demo
 						.RequireRole("Administrator")
 						.RequireClaim(ClaimTypes.Role, "Editor");
 				});
+
+				options.AddPolicy("DocumentManagePolicy", policy =>
+				{
+					policy.Requirements.Add(new SameAuthorRequirement());
+				});
 	        });
+
+	        services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationHandler>();
 
 	        services.AddMvc();
         }
