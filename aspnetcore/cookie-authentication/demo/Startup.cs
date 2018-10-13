@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Claims;
+using demo.Extras.Requirements;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,6 +22,16 @@ namespace demo
 					options.Cookie.Expiration = TimeSpan.FromDays(365);
 					//options.Cookie.Domain = "miroslavholec.cz";
 		        });
+
+	        services.AddAuthorization(options =>
+	        {
+				options.AddPolicy("CustomPolicy", policy =>
+				{
+					policy
+						.RequireRole("Administrator")
+						.RequireClaim(ClaimTypes.Role, "Editor");
+				});
+	        });
 
 	        services.AddMvc();
         }

@@ -32,5 +32,12 @@ namespace demo.Controllers
 		{
 			return Ok("this is anonymous page");
 		}
+
+		[Route("policies")]
+		[Authorize("CustomPolicy")]
+		public IActionResult Policies()
+		{
+			return Ok("this is policy page");
+		}
 	}
 }
