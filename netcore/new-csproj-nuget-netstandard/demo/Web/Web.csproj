@@ -2,10 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Compile Remove="Startup.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Startup.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +22,12 @@
     <ProjectReference Include="..\Demo.Lib.Math\Demo.Lib.Math.csproj" />
     <ProjectReference Include="..\Demo.Lib.Text\Demo.Lib.Text.csproj" />
     <ProjectReference Include="..\Demo.Lib.Web\Demo.Lib.Web.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\css\style.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

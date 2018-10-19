@@ -5,17 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="content\wwwroot\css\demo.css" />
+    <None Remove="wwwroot\css\demo.css" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="content\wwwroot\css\demo.css">
+    <Content Include="wwwroot\css\demo.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="lib\" />
   </ItemGroup>
 
 </Project>
