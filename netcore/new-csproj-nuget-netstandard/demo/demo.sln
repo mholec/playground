@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Lib.Math", "Demo.Lib.M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Lib.Common", "Demo.Lib.Common\Demo.Lib.Common.csproj", "{42BCD066-2EBA-43B4-82DD-0BFD8B87E54C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Lib.Web", "Demo.Lib.Web\Demo.Lib.Web.csproj", "{D5B20E9C-A7A0-4677-A278-FA4E6F87EE63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{42BCD066-2EBA-43B4-82DD-0BFD8B87E54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42BCD066-2EBA-43B4-82DD-0BFD8B87E54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42BCD066-2EBA-43B4-82DD-0BFD8B87E54C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5B20E9C-A7A0-4677-A278-FA4E6F87EE63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5B20E9C-A7A0-4677-A278-FA4E6F87EE63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5B20E9C-A7A0-4677-A278-FA4E6F87EE63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5B20E9C-A7A0-4677-A278-FA4E6F87EE63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

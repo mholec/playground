@@ -16,6 +16,7 @@
     <ProjectReference Include="..\Demo.Lib.Common\Demo.Lib.Common.csproj" />
     <ProjectReference Include="..\Demo.Lib.Math\Demo.Lib.Math.csproj" />
     <ProjectReference Include="..\Demo.Lib.Text\Demo.Lib.Text.csproj" />
+    <ProjectReference Include="..\Demo.Lib.Web\Demo.Lib.Web.csproj" />
   </ItemGroup>
 
 </Project>
