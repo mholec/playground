@@ -1,6 +1,7 @@
 ﻿using demo.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
@@ -52,6 +53,8 @@ namespace demo
                 });
             });
 
+	        services.AddLocalization();
+
             services.AddResponseCaching();
 
             mvc.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -90,13 +93,24 @@ namespace demo
 
             app.UseResponseCaching();
 
-            app.UseMvc();
+	        var requestLocalizationOptions = new RequestLocalizationOptions
+	        {
+		        DefaultRequestCulture = new RequestCulture("cs-cz"),
+	        };
+	        requestLocalizationOptions.RequestCultureProviders.Clear();
+	        requestLocalizationOptions.RequestCultureProviders.Add(new AcceptLanguageHeaderRequestCultureProvider());
+	        requestLocalizationOptions.AddSupportedCultures("cs-cz", "en-us");
+	        requestLocalizationOptions.AddSupportedUICultures("cs-cz", "en-us");
+	        app.UseRequestLocalization(requestLocalizationOptions);
 
-            app.UseCors("Default");
+	        app.UseCors("Default");
 
-            //app.UseHttpCacheHeaders();
+			app.UseMvc();
 
-            app.UseDeveloperExceptionPage();
+			//app.UseHttpCacheHeaders();
+
+			app.UseDeveloperExceptionPage();
+
 
             //app.UseExceptionHandler(exc =>
             //      {

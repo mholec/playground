@@ -17,17 +17,17 @@ namespace demo.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-		private readonly Context _appContext;
+		private readonly Context appContext;
 
 	    public ProductsController(Context appContext)
 	    {
-		    _appContext = appContext;
+		    this.appContext = appContext;
 	    }
 
         [HttpGet]
         public ActionResult<List<Product>> Get()
 	    {
-		    List<Product> products = _appContext.Products.Include(x => x.Tags).ToList();
+		    List<Product> products = appContext.Products.Include(x => x.Tags).ToList();
 
 	        return Ok(products);
         }
@@ -36,7 +36,7 @@ namespace demo.Controllers
         [HttpGet("{id}.{format?}",  Name = "GetProduct")]
         public ActionResult<Product> Get(Guid id, /*[Required]*/string test)
         {
-	        Product product = _appContext.Products.Include(x => x.Tags).FirstOrDefault(x => x.ProductId == id);
+	        Product product = appContext.Products.Include(x => x.Tags).FirstOrDefault(x => x.ProductId == id);
 
 	        if (product == null)
 	        {
@@ -66,8 +66,8 @@ namespace demo.Controllers
 		        return BadRequest(ModelState);
 	        }
 
-	        _appContext.Products.Add(model);
-	        _appContext.SaveChanges();
+	        appContext.Products.Add(model);
+	        appContext.SaveChanges();
 
 	        return CreatedAtRoute("GetProduct", new { id = model.ProductId }, model);
         }
@@ -80,7 +80,7 @@ namespace demo.Controllers
                 return BadRequest();
             }
 
-            var product = _appContext.Products.Find(id);
+            var product = appContext.Products.Find(id);
             if (product == null)
             {
                 return NotFound();
@@ -94,7 +94,7 @@ namespace demo.Controllers
                 return BadRequest(ModelState);
             }
 
-            _appContext.SaveChanges();
+            appContext.SaveChanges();
 
             return Ok();
         }
@@ -104,7 +104,7 @@ namespace demo.Controllers
         [HttpPut("{id}")]
         public ActionResult<Product> Put(Guid id, [FromBody]Product model)
         {
-            var product = _appContext.Products.Find(id);
+            var product = appContext.Products.Find(id);
             if (product == null)
             {
                 return NotFound();
@@ -114,7 +114,7 @@ namespace demo.Controllers
 
             try
             {
-                _appContext.SaveChanges();
+                appContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -127,14 +127,14 @@ namespace demo.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(Guid id)
         {
-            var product = _appContext.Products.Find(id);
+            var product = appContext.Products.Find(id);
             if (product == null)
             {
                 return NotFound();
             }
 
-            _appContext.Products.Remove(product);
-            _appContext.SaveChanges();
+            appContext.Products.Remove(product);
+            appContext.SaveChanges();
 
             return NoContent();
         }
@@ -142,7 +142,7 @@ namespace demo.Controllers
         [HttpGet("{id}/tags")]
         public ActionResult<List<Tag>> GetProductTags(Guid id)
         {
-            var product = _appContext.Products.Include(x => x.Tags).FirstOrDefault(x => x.ProductId == id);
+            var product = appContext.Products.Include(x => x.Tags).FirstOrDefault(x => x.ProductId == id);
 
             if (product == null)
             {
