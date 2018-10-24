@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Správa značek";
+}
+
+<main>
+    <h1>Značky</h1>
+    <p>Zde je přehled značek v eshopu</p>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Název</th>
+            <th>Počet produktů</th>
+            <th width="110"></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>1</td>
+            <td>Apple</td>
+            <td>23</td>
+            <td><a asp-action="Edit" asp-route-id="1">upravit</a> - <a asp-action="Delete" asp-route-id="1">odstranit</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</main>

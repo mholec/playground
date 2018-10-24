@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Správa objednávek";
+}
+
+<main>
+    <h1>Objednávky</h1>
+    <p>Zde je přehled objednávek v eshopu</p>
+
+    <table>
+        <thead>
+        <tr>
+            <th rowspan="2">ID</th>
+            <th rowspan="2">Číslo</th>
+            <th rowspan="2">Status</th>
+            <th width="110"></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>1</td>
+            <td>10000001</td>
+            <td>Nová</td>
+            <td><a asp-action="Edit" asp-route-id="1">upravit</a> - <a asp-action="Delete" asp-route-id="1">odstranit</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</main>

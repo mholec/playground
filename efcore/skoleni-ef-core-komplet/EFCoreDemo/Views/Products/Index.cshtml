@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Správa produktů";
+}
+
+<main>
+    <h1>Produkty</h1>
+    <p>Zde je přehled produktů v eshopu</p>
+
+    <table>
+        <thead>
+        <tr>
+            <th rowspan="2">ID</th>
+            <th rowspan="2">Název</th>
+            <th rowspan="2">Seo Link</th>
+            <th colspan="2">Cena</th>
+            <th width="110"></th>
+        </tr>
+        <tr>
+            <th>bez DPH</th>
+            <th>vč. DPH</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>1</td>
+            <td>Apple iPhone SE - 16 GB</td>
+            <td>iphone-se-16-gb</td>
+            <td>8900</td>
+            <td>9230</td>
+            <td><a asp-action="Edit" asp-route-id="1">upravit</a> - <a asp-action="Delete" asp-route-id="1">odstranit</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</main>

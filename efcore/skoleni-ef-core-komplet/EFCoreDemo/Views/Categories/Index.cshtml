@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Správa kategorií";
+}
+
+<main>
+    <h1>Kategorie</h1>
+    <p>Zde je přehled kategorií v eshopu</p>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Název</th>
+            <th>Seo Link</th>
+            <th>Počet produktů</th>
+            <th width="110"></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>1</td>
+            <td>Mobilní telefony</td>
+            <td>mobilni-telefony</td>
+            <td>3</td>
+            <td><a asp-action="Edit" asp-route-id="1">upravit</a> - <a asp-action="Delete" asp-route-id="1">odstranit</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</main>
