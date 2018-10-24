@@ -52,20 +52,18 @@ namespace demo.Controllers
 
 		    for (int i = 0; i < 5; i++)
 		    {
-				// var content = await downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=2000");
-				// results.Add(content);
+				var content = await downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=2000");
+				results.Add(content);
 
-				// https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt
-				var content = downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=2000");
-			    awaitResults.Add(content);
+				//var content = downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=2000");
+				//awaitResults.Add(content);
 			}
 
-		    await Task.WhenAll(awaitResults);
-		    //awaitResults.ForEach(x => x.Wait());
+			//await Task.WhenAll(awaitResults);
+			//awaitResults.ForEach(x => x.Wait());
+			//awaitResults.ForEach(async x => results.Add(await x));
 
-			awaitResults.ForEach(async x=> results.Add(await x));
-
-		    sw.Stop();
+			sw.Stop();
 
 		    return Ok(sw.ElapsedMilliseconds);
 	    }

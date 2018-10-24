@@ -1,0 +1,6 @@
+-- MASTER LEVEL - SERVER --
+CREATE LOGIN weblogin WITH PASSWORD = 'asdfghjkl' CHECK_EXPIRATION = OFF, CHECK_POLICY = OFF;
+
+-- DB LEVEL --
+CREATE USER webuser FROM LOGIN weblogin;
+ALTER ROLE db_owner ADD MEMBER webuser; 
