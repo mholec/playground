@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Security.Claims;
 using demo.Extras.AuthHandlers;
-using demo.Extras.Requirements;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace demo
 {
@@ -40,7 +40,8 @@ namespace demo
 				});
 	        });
 
-	        services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationHandler>();
+			services.TryAddScoped<IPasswordHasher<object>, PasswordHasher<object>>();
+			services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationHandler>();
 
 	        services.AddMvc();
         }
