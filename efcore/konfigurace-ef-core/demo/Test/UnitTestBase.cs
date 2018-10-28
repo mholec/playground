@@ -1,5 +1,6 @@
 using System;
 using Lib.Model;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -7,22 +8,26 @@ namespace Test
 {
 	public abstract class UnitTestBase
 	{
+		protected DbContextOptions<AppDbContext> GetInMemoryOptions(string name = "Default")
+		{
+			return new DbContextOptionsBuilder<AppDbContext>().UseInMemoryDatabase(name).Options;
+		}
+
+		protected DbContextOptions<AppDbContext> GetSqlliteOptions(string name = "Default")
+		{
+			return new DbContextOptionsBuilder<AppDbContext>().UseSqlite(name).Options;
+		}
+
 		protected AppDbContext GetInMemoryDbContext(string name)
 		{
 			DbContextOptionsBuilder<AppDbContext> builder = new DbContextOptionsBuilder<AppDbContext>()
 				.UseInMemoryDatabase(name);
 
 			AppDbContext dbContext = new AppDbContext(builder.Options);
-			dbContext.Database.EnsureDeleted();
-			dbContext.Database.EnsureCreated();
 
 			return dbContext;
 		}
 
-		protected AppDbContext GetInMemoryDbContext()
-		{
-			return GetInMemoryDbContext(Guid.NewGuid().ToString("N"));
-		}
 
 		protected AppDbContext GetSqliteDbContext(string name)
 		{
@@ -30,8 +35,6 @@ namespace Test
 				.UseSqlite($"DataSource={name}");
 
 			AppDbContext dbContext = new AppDbContext(builder.Options);
-			//dbContext.Database.EnsureDeleted();
-			dbContext.Database.EnsureCreated();
 
 			return dbContext;
 		}

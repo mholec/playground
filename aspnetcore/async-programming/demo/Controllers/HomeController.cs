@@ -52,14 +52,14 @@ namespace demo.Controllers
 
 		    for (int i = 0; i < 5; i++)
 		    {
-				var content = await downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=2000");
-				results.Add(content);
+				//var content = await downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=2000");
+				//results.Add(content);
 
-				//var content = downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=2000");
-				//awaitResults.Add(content);
+				var content = downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=2000");
+				awaitResults.Add(content);
 			}
 
-			//await Task.WhenAll(awaitResults);
+			await Task.WhenAll(awaitResults);
 			//awaitResults.ForEach(x => x.Wait());
 			//awaitResults.ForEach(async x => results.Add(await x));
 

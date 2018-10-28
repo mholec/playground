@@ -7,12 +7,19 @@ namespace Test
 	[TestClass]
 	public class SqliteTests : UnitTestBase
 	{
-		private AppDbContext dbcontext;
+		private readonly AppDbContext dbcontext;
+
+		public SqliteTests()
+		{
+			dbcontext = new AppDbContext(GetSqlliteOptions());
+		}
 
 		[TestInitialize]
 		public void TestInitialize()
 		{
-			dbcontext = GetSqliteDbContext("AAAB");
+			// pro každý test odstranit data (izolace testù)
+			dbcontext.Database.EnsureDeleted();
+			dbcontext.Database.EnsureCreated();
 		}
 
 		[TestMethod]
@@ -36,6 +43,7 @@ namespace Test
 		[TestMethod]
 		public void TestMethod3()
 		{
+			// jiná varianta vytvoøení konextu, životnost se øídí v metodì GetSqliteDbContext()
 			using (var dbc = GetSqliteDbContext())
 			{
 				Eshop eshop = dbc.Eshops.Add(new Eshop() { Title = "Test" }).Entity;
