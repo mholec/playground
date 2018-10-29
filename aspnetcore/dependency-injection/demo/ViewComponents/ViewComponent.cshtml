@@ -1,0 +1,8 @@
+﻿@using demo.Services.Generators
+@inject IScopedGuidGen ScopedGuidGen
+
+@Model<br/>
+
+<p>
+    Another Injected GUID: @ScopedGuidGen.GetGuid()
+</p>

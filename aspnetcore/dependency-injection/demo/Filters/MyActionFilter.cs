@@ -13,7 +13,7 @@ namespace demo.Filters
 			this.scopedGuidGen = scopedGuidGen;
 		}
 
-		public  override void OnActionExecuting(ActionExecutingContext context)
+		public override void OnActionExecuting(ActionExecutingContext context)
 		{
 			var test = scopedGuidGen.GetGuid();
 		}
