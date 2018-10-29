@@ -19,6 +19,7 @@ namespace UkazkaAspNetCore._Logging
 			logger.LogInformation("Index fired!");
 			logger.LogWarning("Warning message");
 			logger.LogInformation(new ApplicationException("Popis výjimky"), "Message výjimky");
+			logger.LogError(new ApplicationException("Popis výjimky"), "Message výjimky");
 
 	        using (logger.BeginScope("Transaction logging, group everything together"))
 	        {

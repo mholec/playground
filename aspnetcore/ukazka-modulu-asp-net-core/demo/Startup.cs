@@ -119,13 +119,14 @@ namespace UkazkaAspNetCore
 
 		public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-	        loggerFactory.AddConsole(Configuration);
-	        loggerFactory.AddDebug();
+	        loggerFactory.AddConsole(Configuration); // default
+	        loggerFactory.AddDebug(); // default
+	        loggerFactory.AddEventSourceLogger();
 			loggerFactory.AddApplicationInsights(app.ApplicationServices);
 	        loggerFactory.AddAzureWebAppDiagnostics();
 
 			// CUSTOM LOGGER
-	        loggerFactory.AddProvider(new MyCustomLoggerProvider(new MyCustomLoggerConfig()));
+	        //loggerFactory.AddProvider(new MyCustomLoggerProvider(new MyCustomLoggerConfig()));
 
 			// ERROR HANDLING
             if (Environment.IsDevelopment())
@@ -136,10 +137,9 @@ namespace UkazkaAspNetCore
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
@@ -164,7 +164,7 @@ namespace UkazkaAspNetCore
 			//	await context.Response.WriteAsync("App Run fired \n");
 			//});
 
-			// app.Map("/handle/xyz", ExampleHandle.HandleXyz);
+			app.Map("/handle/xyz", ExampleHandle.HandleXyz);
 
 			// app.MapWhen(context => context.Request.GetUri().AbsolutePath.Contains("handle/"), ExampleHandle.HandleXyz);
 
