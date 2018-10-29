@@ -26,6 +26,7 @@ namespace UkazkaAspNetCore._Logging
 
 		public IDisposable BeginScope<TState>(TState state)
 		{
+			return null;
 		}
 	}
 }
