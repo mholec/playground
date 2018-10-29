@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UkazkaAspNetCore._HttpContext
@@ -18,8 +19,8 @@ namespace UkazkaAspNetCore._HttpContext
 
 	    [Route("context")]
         public IActionResult Index()
-		{
-			return Ok(customService.GetContext());
+	    {
+			return Ok(customService.GetIdentity());
 		}
     }
 }

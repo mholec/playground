@@ -12,7 +12,7 @@ namespace UkazkaAspNetCore._HttpContext
 			this.httpContextAccessor = httpContextAccessor;
 		}
 
-		public IIdentity GetContext()
+		public IIdentity GetIdentity()
 		{
 			return httpContextAccessor.HttpContext.User.Identity;
 		}
