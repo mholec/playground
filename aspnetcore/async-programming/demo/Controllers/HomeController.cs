@@ -27,14 +27,14 @@ namespace demo.Controllers
 	        for (int i = 0; i < 5; i++)
 	        {
 				// nejčastější užití - diskové a síťové operace, přístup do db, I/O
-				var content = downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=2000");
+				var content = await downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=2000");
 
 		        // práce na něčem jiném, nezávislém
 				// mělo by to být něco, co je long-running (jinak to nemá smysl)
 		        Thread.Sleep(2000);
-
+		        
 				// práce s daty získanými asynchronně
-				var cont = await content;
+				var cont = content.Substring(0,1);
 			}
 			sw.Stop();
 
@@ -52,11 +52,11 @@ namespace demo.Controllers
 
 		    for (int i = 0; i < 5; i++)
 		    {
-				//var content = await downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=2000");
-				//results.Add(content);
+				var content = await downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=4000");
+				results.Add(content);
 
-				var content = downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=2000");
-				awaitResults.Add(content);
+				//var content = downloadWebsiteService.GetContentAsync("http://httpstat.us/200?sleep=4000");
+				//awaitResults.Add(content);
 			}
 
 			await Task.WhenAll(awaitResults);

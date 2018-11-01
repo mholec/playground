@@ -4,14 +4,16 @@ using System.Linq;
 using demo.ApiModels;
 using demo.Repositories;
 using demo.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 
 namespace demo.Controllers
 {
     //[EnableCors("Default")]
-    //[Produces("application/json")]
+    //[Produces("application/xml")]
     [ApiController]
     [ResponseCache(Duration = 1200)]
     [Route("api/[controller]")]
@@ -26,7 +28,7 @@ namespace demo.Controllers
 
         [HttpGet]
         public ActionResult<List<Product>> Get()
-	    {
+        {
 		    List<Product> products = appContext.Products.Include(x => x.Tags).ToList();
 
 	        return Ok(products);

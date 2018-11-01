@@ -6,17 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Demo.Lib.Math" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Demo.Lib.Common\Demo.Lib.Common.csproj" />
-    <ProjectReference Include="..\Demo.Lib.Math\Demo.Lib.Math.csproj" />
-    <ProjectReference Include="..\Demo.Lib.Text\Demo.Lib.Text.csproj" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <ProjectReference Include="..\Demo.Lib.Common\Demo.Lib.Common.csproj" />
   </ItemGroup>
 
 </Project>

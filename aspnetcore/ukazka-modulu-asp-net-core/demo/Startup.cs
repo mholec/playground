@@ -44,7 +44,6 @@ namespace UkazkaAspNetCore
 
 
 
-
 	        // CONFIGURATION OPTIONS
 	        services.Configure<AppSettings>(Configuration); // root
 	        services.Configure<SmtpSettings>(Configuration.GetSection("SmtpSettings")); // section
@@ -126,13 +125,13 @@ namespace UkazkaAspNetCore
 	        loggerFactory.AddAzureWebAppDiagnostics();
 
 			// CUSTOM LOGGER
-	        //loggerFactory.AddProvider(new MyCustomLoggerProvider(new MyCustomLoggerConfig()));
+	        loggerFactory.AddProvider(new MyCustomLoggerProvider(new MyCustomLoggerConfig()));
 
 			// ERROR HANDLING
             if (Environment.IsDevelopment())
             {
-	            app.UseDeveloperExceptionPage();
-	            //app.UseSimpleExceptionPageMiddleware();
+	            //app.UseDeveloperExceptionPage();
+	            app.UseSimpleExceptionPageMiddleware();
             }
             else
             {
@@ -164,7 +163,7 @@ namespace UkazkaAspNetCore
 			//	await context.Response.WriteAsync("App Run fired \n");
 			//});
 
-			app.Map("/handle/xyz", ExampleHandle.HandleXyz);
+			app.Map("/imagehandler/nazev", ExampleHandle.HandleXyz);
 
 			// app.MapWhen(context => context.Request.GetUri().AbsolutePath.Contains("handle/"), ExampleHandle.HandleXyz);
 

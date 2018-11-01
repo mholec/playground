@@ -16,8 +16,9 @@ namespace demo.Controllers
 {
     [ApiController]
     [ResponseCache(Duration = 1200)]
-    [Route("api/[controller]")]
-    public class AdvancedController : ControllerBase
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [ApiVersion("1.0")]
+	public class AdvancedController : ControllerBase
     {
 		private readonly Context appContext;
 
@@ -26,16 +27,34 @@ namespace demo.Controllers
 		    this.appContext = appContext;
 	    }
 
-        [HttpGet]
-        public async Task<ActionResult<List<Product>>> Get()
-        {
-	        var requestCulture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture;
+		[HttpGet/*, MapToApiVersion("1.0")*/]
+		public IActionResult VersioningDemo(int version)
+	    {
+		    if (version == 1)
+		    {
 
-			List<Product> products = await appContext.Products.Include(x => x.Tags)
-			    .Where(x=> x.Language == requestCulture.Culture.Name)
-			    .ToListAsync();
+		    }
 
-	        return Ok(products);
-        }
+
+		    return Ok(new {Data = "verze 1.0"});
+	    }
+
+	 //   [HttpGet, MapToApiVersion("2.0")]
+	 //   public IActionResult VersioningDemoV2()
+	 //   {
+		//	return Ok(new { Data = "verze 2.0" });
+		//}
+
+		//[HttpGet]
+  //      public async Task<ActionResult<List<Product>>> Get()
+  //      {
+	 //       var requestCulture = HttpContext.Features.Get<IRequestCultureFeature>().RequestCulture;
+
+		//	List<Product> products = await appContext.Products.Include(x => x.Tags)
+		//	    .Where(x=> x.Language == requestCulture.Culture.Name)
+		//	    .ToListAsync();
+
+	 //       return Ok(products);
+  //      }
 	}
 }
