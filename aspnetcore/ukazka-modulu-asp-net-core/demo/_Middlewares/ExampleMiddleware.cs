@@ -12,6 +12,7 @@ namespace UkazkaAspNetCore._Middlewares
 	{
 		private readonly RequestDelegate next;
 
+		// Služby se injectují přes Invoke, pokud by byly v ctoru, staly by se singletonem!
 		public ExampleMiddleware(RequestDelegate next)
 		{
 			this.next = next;
