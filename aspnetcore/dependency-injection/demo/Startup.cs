@@ -16,7 +16,7 @@ namespace demo
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
 			// jedine pravidlo je, že by se neměla scoped / transient service volat ze singleton scope
-			services.AddScoped<IScopedGuidGen, GuidGen>();
+			//services.AddScoped<IScopedGuidGen, GuidGen>();
 			services.AddTransient<ITransientGuidGen, GuidGen>();
 			services.AddSingleton<ISingletonGuidGen, GuidGen>();
 			services.AddTransient<GuidService, GuidService>();
@@ -27,6 +27,12 @@ namespace demo
 
 			// custom container service, windsor: https://www.nuget.org/packages/Castle.Windsor.MsDependencyInjection
 	        WindsorContainer container = new WindsorContainer();
+	        container.Register(Component
+		        .For<IScopedGuidGen>()
+		        .ImplementedBy<GuidGen>()
+		        .LifestyleCustom<MsScopedLifestyleManager>() // ScopedLifestyle (per web request execution - MsLifetimeScope)
+	        );
+
 	        IServiceProvider serviceProvider = WindsorRegistrationHelper.CreateServiceProvider(container, services);
 
 			return serviceProvider;
