@@ -1,36 +1,34 @@
 # Agenda
 
-**Délka kurzu: cca 4 hodiny**
+**DÃ©lka kurzu: cca 4 hodiny**
 
-### M1: Úvod do Entity Framework Core
+### M1: Ãšvod do Entity Framework Core
 
-- **Prezentace: Úvod do Entity Framework Core**
-- DEMO: Instalace EF Core a tooling pro práci
+- **Prezentace: Ãšvod do Entity Framework Core**
+- DEMO: Instalace EF Core a tooling pro prÃ¡ci
 - DEMO: Providers a integrace do (ASP).NET Core
 - DEMO: Konfigurace kontextu
 
 
-### M2: Objektovì relaèní mapování
+### M2: ObjektovÃ¬ relaÃ¨nÃ­ mapovÃ¡nÃ­
 
-- **Prezentace: Objektovì relaèní mapování**
+- **Prezentace: ObjektovÄ› relaÄnÃ­ mapovÃ¡nÃ­**
 - DEMO: 
 
 
-### M3: Správa modelu a deployment
+### M3: SprÃ¡va modelu a deployment
 
-- **Prezentace: Správa modelu a deployment
-- DEMO: Seedování
-- DEMO: Správa modelu a migrace
-- DEMO: Deployment zmìn
-
-
-### M4: Praktické pouití modelu
-
-- **Prezentace: 
+- **Prezentace: SprÃ¡va modelu a deployment**
+- DEMO: SeedovÃ¡nÃ­
+- DEMO: SprÃ¡va modelu a migrace
+- DEMO: Deployment zmÃ¬n
 
 
-    Dotazování se na data, CRUD operace
-    Change Tracking a vztah k ukládání zmìn
-    Lazy / Eager / Explicit Loading
-    Pouití EF Core v Unit Testech
-    Závìreèná diskuse s úèastníky
+### M4: PraktickÃ© pouÅ¾itÃ­ modelu
+
+- **Prezentace: **
+- DotazovÃ¡nÃ­ se na data, CRUD operace
+- Change Tracking a vztah k uklÃ¡dÃ¡nÃ­ zmÃ¬n
+- Lazy / Eager / Explicit Loading
+- PouÅ¾itÃ­ EF Core v Unit Testech
+- ZÃ¡vÄ›reÄnÃ¡ diskuse s ÃºÄastnÃ­ky
