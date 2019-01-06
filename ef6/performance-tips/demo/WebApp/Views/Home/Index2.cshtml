@@ -1,0 +1,16 @@
+﻿@model List<Model.User>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    @foreach (var user in Model)
+    {
+        <h1>@user.Firstname @user.Lastname</h1>
+        <h2>Groups</h2>
+        foreach (var group in user.UserGroups.Select(x => x.Group))
+        {
+            <span style="margin-right: 10px;">@group.Name</span>
+        }
+    }
+</div>

@@ -1,0 +1,93 @@
+2019-01-05 15:44:54,536 [1] DEBUG HibernatingRhinos.Profiler.Client.App [(null)] - Profiler initialized. Build: 5031
+2019-01-05 15:44:56,892 [1] WARN  Rhino.Licensing.AbstractLicenseValidator [(null)] - Could not find license file: C:\Users\mirek\AppData\Local\EntityFramework Profiler\license.xml
+2019-01-05 17:25:43,655 [1] DEBUG HibernatingRhinos.Profiler.Client.App [(null)] - Profiler initialized. Build: 5031
+2019-01-05 17:25:46,635 [1] WARN  Rhino.Licensing.AbstractLicenseValidator [(null)] - Could not find license file: C:\Users\mirek\AppData\Local\EntityFramework Profiler\license.xml
+2019-01-05 17:26:01,703 [1] WARN  Rhino.Licensing.AbstractLicenseValidator [(null)] - License expiration date is 02/06/2019 00:00:00
+2019-01-05 17:26:01,993 [1] DEBUG Rhino.Licensing.AbstractLicenseValidator [(null)] - License accepted for EntityFramework Profiler
+2019-01-05 17:26:02,016 [1] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2019-01-05 17:26:02,218 [1] WARN  Rhino.Licensing.AbstractLicenseValidator [(null)] - License expiration date is 02/06/2019 00:00:00
+2019-01-05 17:26:02,481 [1] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2019-01-05 17:26:02,482 [1] DEBUG Rhino.Licensing.AbstractLicenseValidator [(null)] - License accepted for EntityFramework Profiler
+2019-01-05 17:26:04,221 [4] INFO  HibernatingRhinos.Profiler.Client.Infrastructure.AutoUpdate.ProfilerAutoUpdate [(null)] - Checking for updates...
+2019-01-05 17:50:09,842 [1] DEBUG HibernatingRhinos.Profiler.Client.App [(null)] - Profiler initialized. Build: 5031
+2019-01-05 17:50:12,129 [1] WARN  Rhino.Licensing.AbstractLicenseValidator [(null)] - License expiration date is 02/06/2019 00:00:00
+2019-01-05 17:50:12,419 [1] DEBUG Rhino.Licensing.AbstractLicenseValidator [(null)] - License accepted for EntityFramework Profiler
+2019-01-05 17:50:12,434 [4] INFO  HibernatingRhinos.Profiler.Client.Infrastructure.AutoUpdate.ProfilerAutoUpdate [(null)] - Checking for updates...
+2019-01-05 17:50:12,476 [1] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2019-01-05 18:00:12,156 [35] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2019-01-05 18:05:12,179 [35] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2019-01-06 08:03:56,127 [1] DEBUG HibernatingRhinos.Profiler.Client.App [(null)] - Profiler initialized. Build: 5031
+2019-01-06 08:03:58,935 [1] WARN  Rhino.Licensing.AbstractLicenseValidator [(null)] - License expiration date is 02/06/2019 00:00:00
+2019-01-06 08:03:59,191 [1] DEBUG Rhino.Licensing.AbstractLicenseValidator [(null)] - License accepted for EntityFramework Profiler
+2019-01-06 08:03:59,206 [8] INFO  HibernatingRhinos.Profiler.Client.Infrastructure.AutoUpdate.ProfilerAutoUpdate [(null)] - Checking for updates...
+2019-01-06 08:03:59,261 [1] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2019-01-06 08:13:58,952 [27] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2019-01-06 08:18:58,961 [27] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2019-01-06 08:32:02,545 [1] DEBUG HibernatingRhinos.Profiler.Client.App [(null)] - Profiler initialized. Build: 5031
+2019-01-06 08:32:04,730 [1] WARN  Rhino.Licensing.AbstractLicenseValidator [(null)] - License expiration date is 02/06/2019 00:00:00
+2019-01-06 08:32:05,123 [1] DEBUG Rhino.Licensing.AbstractLicenseValidator [(null)] - License accepted for EntityFramework Profiler
+2019-01-06 08:32:05,139 [11] INFO  HibernatingRhinos.Profiler.Client.Infrastructure.AutoUpdate.ProfilerAutoUpdate [(null)] - Checking for updates...
+2019-01-06 08:32:05,153 [1] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
