@@ -1,9 +1,8 @@
 using System;
 using System.Data.Entity;
 using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Model;
 
@@ -20,81 +19,195 @@ namespace WebApp.Controllers
 
         public ActionResult Index()
         {
-	        var userWithGroups = db.Users
-		        .Include(x => x.UserGroups.Select(y => y.Group));
+	        var methods = this.GetType().GetMethods().Where(x=> x.DeclaringType == this.GetType()).ToArray();
 
-
-	        List<User> data = db.Users.ToList();
-
-			//User user = db.Users.FirstOrDefault(x => x.Id == 1);
-
-	        string name = db.Users.Where(x => x.Id == 1)
-		        .Select(x => x.Firstname)
-		        .FirstOrDefault();
-
-			//string name = db.Users.FirstOrDefault(x => x.Id == 1)?.Firstname;
-
-	        DbSet<User>         u1 = db.Users;
-	        DbQuery<User>       u2 = db.Users.Include("x");
-	        IQueryable<User>    u3 = db.Users.AsQueryable();
-	        IEnumerable<User> u4 = db.Users.AsEnumerable().Where(x => x.Id < 10);
-
-	        IEnumerator<User> s = u4.GetEnumerator();
-	        s.MoveNext();
-
-	        List<User>          u5 = db.Users.ToList();
-
-
-	        var users = db.Users.Where(x => x.Id < 10);
-	        foreach (var user in users)
-	        {
-				// todo
-	        }
-
-
-	        var tmp = users.GetEnumerator();
-	        while (tmp.MoveNext())
-	        {
-		        User user = tmp.Current;
-	        }
-			tmp.Dispose();
-
-			var ex2 = data.Where(x => x.UserGroups.Any(y => y.Group.Name == "xy")).ToList();
-
-
-	        var data1 = db.Groups.Include(x => x.UserGroups.Select(y => y.User)).FirstOrDefault(x => x.Id == 1);
-
-	        var data2 = db.Groups.AsNoTracking().FirstOrDefault(x=> x.Id == 1);
-	        var groups2 = db.UserGroups.AsNoTracking().Where(x => x.GroupId == data2.Id).Select(x => x.User).ToList();
-
-	        var data3 = db.Groups.AsNoTracking().FirstOrDefault(x => x.Id == 1);
-	        db.Entry(data3).Collection(x=> x.UserGroups).Load();
-
-
-
-
-	        return View(data2);
+			return View(methods);
         }
 
-	    public ActionResult Index2()
+	    public ActionResult Profiling()
 	    {
-		    var result = db.Users.Select(x=> new {x.Id, x.Lastname})
-			    .ToDictionary(x => x.Id, x => x.Lastname);
+		    var all = db.Users.Include(x => x.UserGroups);
 
+		    string sqlQuery = all.ToString();
 
-			var ex1 = db.Users.ToList();
+		    var result = all.ToList();
 
-		    return View(ex1);
+		    return null;
 	    }
 
-		public class Name
+	    public ActionResult Projekce_Before()
 	    {
-			public string Nama { get; set; }
+		    var users = db.Users;
+
+		    foreach (var user in users)
+		    {
+			    var viewModel = new UserVM()
+			    {
+				    Firstname = user.Firstname,
+				    Lastname = user.Lastname
+			    };
+
+				List<string> groups = new List<string>();
+			    foreach (var result in user.UserGroups.Select(x=> x.Group))
+			    {
+				    groups.Add(result.Name);
+			    }
+
+			    viewModel.Groups = groups;
+		    }
+
+		    return null;
 	    }
 
-	    private JsonResult JsonData(object data)
+	    public ActionResult Projekce_After()
 	    {
-		    return Json(data, JsonRequestBehavior.AllowGet);
+		    var users = db.Users.Include(x => x.UserGroups.Select(y => y.Group));
+
+		    var result = users.Select(x => new UserVM()
+		    {
+				Lastname = x.Lastname,
+				Firstname = x.Firstname,
+				Groups = x.UserGroups.Select(y=> y.Group.Name).ToList()
+		    }).ToList();
+
+		    return null;
 	    }
+
+
+	    public ActionResult Projekce_ToDictionary()
+	    {
+			// do not
+		    var dict1 = db.Users.ToDictionary(x => x.Id, x => x.DateOfBirth);
+
+			// do
+			var dict2 = db.Users.Select(x=> new {x.Id, x.DateOfBirth}).ToDictionary(x => x.Id, x => x.DateOfBirth);
+
+			return null;
+	    }
+
+		public ActionResult Selekce()
+		{
+			var users = db.Users.Where(x => x.DateOfBirth < new DateTime(2010, 1, 1));
+
+			if (true)
+			{
+				users = users.Where(x => x.Firstname != null && x.Lastname != null);
+			}
+
+			var d1 = users.OrderBy(x => x.DateOfBirth).Select(x=> new {x.Firstname, x.Lastname}).Take(5).ToList();
+			int[] d2 = users.Select(x => x.Id).ToArray();
+
+		    return null;
+	    }
+
+
+	    public ActionResult LazyLoading_Loop_Before()
+	    {
+		    var group = db.Groups.FirstOrDefault(x => x.Id == 1);
+
+			List<User> users = new List<User>();
+		    foreach (var user in group.UserGroups.Select(y=> y.User))
+		    {
+			    if (user.DateOfBirth < new DateTime(2010, 1, 1))
+			    {
+					users.Add(user);
+			    }
+		    }
+
+		    return null;
+	    }
+
+	    public ActionResult EagerLoading_Loop_After()
+	    {
+		    var users = db.Users										// by users
+			    .Include(x => x.UserGroups.Select(y => y.Group))		// include - eager - JOIN
+			    .Where(x => x.UserGroups.Any(y => y.GroupId == 1))		// selection
+			    .ToList();												// * projection
+
+		    return null;
+	    }
+
+	    public ActionResult DetectChanges_Loop()
+	    {
+		    Stopwatch sw = new Stopwatch();
+		    var data = db.Users.ToList();
+
+			sw.Start();
+		    foreach (var user in data)
+		    {
+			    db.Users.Add(user);
+		    }
+			sw.Stop();
+		    long elapsed1 = sw.ElapsedMilliseconds;
+			sw.Reset();
+
+
+			sw.Start();
+		    db.Users.AddRange(data);
+		    sw.Stop();
+		    long elapsed2 = sw.ElapsedMilliseconds;
+		    sw.Reset();
+
+		    sw.Start();
+			db.Configuration.AutoDetectChangesEnabled = false;
+		    foreach (var user in data)
+		    {
+			    db.Users.Add(user);
+		    }
+		    db.Configuration.AutoDetectChangesEnabled = true;
+		    sw.Stop();
+		    long elapsed3 = sw.ElapsedMilliseconds;
+		    sw.Reset();
+
+
+			return null;
+	    }
+
+	    public ActionResult EntityState_Delete()
+	    {
+		    Stopwatch sw = new Stopwatch();
+
+
+
+			sw.Start();
+			var usersToDelete = db.Users.Take(10).ToList();
+			foreach (var user in usersToDelete)
+			{
+				db.Users.Remove(user);
+			}
+			sw.Stop();
+			long elapsed1 = sw.ElapsedMilliseconds;
+			sw.Reset();
+
+
+
+			sw.Start();
+			usersToDelete = db.Users.Take(10).ToList();
+			db.Users.RemoveRange(usersToDelete);
+			sw.Stop();
+			long elapsed2 = sw.ElapsedMilliseconds;
+			sw.Reset();
+
+
+			sw.Start();
+			var idsToDelete = db.Users.Select(x => x.Id).Take(10);
+		    foreach (var i in idsToDelete)
+		    {
+			    db.Entry(new User() {Id = i}).State = EntityState.Deleted;
+		    }
+		    sw.Stop();
+		    long elapsed3 = sw.ElapsedMilliseconds;
+		    sw.Reset();
+
+			return null;
+	    }
+
+	    public class UserVM
+	    {
+		    public string Firstname { get; set; }
+		    public string Lastname { get; set; }
+
+			public List<string> Groups { get; set; }
+		}
     }
 }
