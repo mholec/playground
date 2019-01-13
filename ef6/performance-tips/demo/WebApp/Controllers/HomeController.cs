@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
 using Model;
+using Z.EntityFramework.Plus;
 
 namespace WebApp.Controllers
 {
@@ -19,7 +20,7 @@ namespace WebApp.Controllers
 
         public ActionResult Index()
         {
-	        var methods = this.GetType().GetMethods().Where(x=> x.DeclaringType == this.GetType()).ToArray();
+            var methods = this.GetType().GetMethods().Where(x=> x.DeclaringType == this.GetType()).ToArray();
 
 			return View(methods);
         }
@@ -87,7 +88,7 @@ namespace WebApp.Controllers
 
 		public ActionResult Selekce()
 		{
-			var users = db.Users.Where(x => x.DateOfBirth < new DateTime(2010, 1, 1));
+			IQueryable<User> users = db.Users.Where(x => x.DateOfBirth < new DateTime(2010, 1, 1));
 
 			if (true)
 			{
@@ -121,7 +122,8 @@ namespace WebApp.Controllers
 	    {
 		    var users = db.Users										// by users
 			    .Include(x => x.UserGroups.Select(y => y.Group))		// include - eager - JOIN
-			    .Where(x => x.UserGroups.Any(y => y.GroupId == 1))		// selection
+			    .Where(x => x.UserGroups.Any(y => y.GroupId == 1) && x.DateOfBirth < new DateTime(2010, 1, 1))		// selection
+		        .Select(x=> new {x.Firstname, x.Lastname})
 			    .ToList();												// * projection
 
 		    return null;
@@ -191,16 +193,37 @@ namespace WebApp.Controllers
 
 			sw.Start();
 			var idsToDelete = db.Users.Select(x => x.Id).Take(10);
-		    foreach (var i in idsToDelete)
+
+            foreach (var i in idsToDelete)
 		    {
 			    db.Entry(new User() {Id = i}).State = EntityState.Deleted;
 		    }
 		    sw.Stop();
 		    long elapsed3 = sw.ElapsedMilliseconds;
-		    sw.Reset();
+	        sw.Reset();
 
-			return null;
+	        //db.SaveChanges(); // !! transaction!!
+
+	        // int deleted = db.Users.Where(x => x.Id < 30).Delete(); // EF.Plus - 1 sql query
+
+            return null;
 	    }
+
+        public ActionResult EntityState_Update()
+        {
+            var changedUser = new User()
+            {
+                Id = 1,                         // identifier (WHERE Id = 1)
+                Lastname = "Holec 2019"         // changed value
+                                                // other values = unchanged (default values)
+            };
+            db.Entry(changedUser).State = EntityState.Modified;
+            db.SaveChanges();   // update dbo.Users...
+
+            // db.Users.Where(x => x.Id < 15).Update(x => new User() { Lastname = "H" }); // update only lastname
+
+            return null;
+        }
 
 	    public class UserVM
 	    {
