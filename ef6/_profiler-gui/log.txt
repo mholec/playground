@@ -151,3 +151,43 @@ System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se sok
    v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
    v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
    v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2019-01-13 15:54:24,427 [27] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2019-01-13 15:59:24,438 [27] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2019-01-13 16:04:24,450 [27] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2019-01-13 16:09:24,465 [27] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2019-01-13 16:14:24,482 [28] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): Došlo k pokusu o operaci se soketem v okamžiku nedosažitelnosti hostitele
+   v System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   v System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Konec trasování zásobníku z pøedchozího místa, ze kterého byla vyvolána výjimka ---
+   v System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   v System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   v Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
