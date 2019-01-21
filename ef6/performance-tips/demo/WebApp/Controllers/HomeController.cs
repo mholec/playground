@@ -225,7 +225,35 @@ namespace WebApp.Controllers
             return null;
         }
 
-	    public class UserVM
+        public ActionResult EfPlus_BulkInsert()
+        {
+            var user1 = new User(){DateOfBirth = DateTime.Now, Firstname = "M", Lastname = "H"};
+            var user2 = new User()
+            {
+                DateOfBirth = DateTime.Now, Firstname = "M", Lastname = "H",
+                UserGroups = new List<UserGroup>()
+                {
+                    new UserGroup()
+                    {
+                        Added = DateTime.Now,
+                        Group = new Group()
+                        {
+                            Name = "Test 1",
+                            Description = "Bulk test"
+                        }
+                    }
+                }
+            };
+
+
+            db.BulkInsert(new[] {user1, user2});
+
+            var usr = db.Users.FirstOrDefault(x => x.Id == user2.Id);
+
+            return null;
+        }
+
+        public class UserVM
 	    {
 		    public string Firstname { get; set; }
 		    public string Lastname { get; set; }
