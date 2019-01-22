@@ -12,11 +12,11 @@ namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly MyFacade facade;
+        private readonly MainFacade mainFacade;
 
-        public HomeController(MyFacade facade)
+        public HomeController(MainFacade mainFacade)
         {
-            this.facade = facade;
+            this.mainFacade = mainFacade;
         }
 
         protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
@@ -48,8 +48,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            throw new Exception("test");
-            var model = facade.GetHomepage();
+            HomeViewModel model = mainFacade.GetHomepage();
 
             return View(model);
         }

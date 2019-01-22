@@ -153,7 +153,12 @@
     <Compile Include="Attributes\AuthAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Facades\HomeViewModel.cs" />
-    <Compile Include="Facades\MyFacade.cs" />
+    <Compile Include="Facades\IProductListQuery.cs" />
+    <Compile Include="Facades\MainFacade.cs" />
+    <Compile Include="Facades\ProductListQuery.cs" />
+    <Compile Include="Facades\ProductListQueryFilter.cs" />
+    <Compile Include="Facades\ProductViewModel.cs" />
+    <Compile Include="Facades\QueryResult.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
